@@ -1,3 +1,6 @@
+https://eanakhinshowcasethings.netlify.app/ - there you can see preview
+
+
 ### Info
 
 All the animations can be found in src/animations
