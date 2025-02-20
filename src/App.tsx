@@ -2,6 +2,7 @@ import { useState } from "react";
 import { TextLoadingStatus } from "./animations/TextLoadingStatus.tsx";
 import { OpeningCard } from "./components/OpeningCard.tsx";
 import LampImage from "./assets/images/floorLamp.png";
+import { FlippingCard } from "./components/FlippingCard.tsx";
 
 function App() {
   const [activeComponent, setActiveComponent] = useState("OpeningCard");
@@ -21,6 +22,12 @@ function App() {
           onClick={() => setActiveComponent("TextLoadingStatus")}
         >
           Text Loading Status
+        </button>
+        <button
+          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-green-600 transition-colors"
+          onClick={() => setActiveComponent("FlippingCard")}
+        >
+          Flipping Card
         </button>
       </div>
 
@@ -44,6 +51,8 @@ function App() {
             textAnimationDuration={1.6}
           />
         )}
+
+        {activeComponent === "FlippingCard" && <FlippingCard />}
       </div>
     </div>
   );
