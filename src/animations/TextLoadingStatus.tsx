@@ -25,7 +25,6 @@ export const TextLoadingStatus: FC<LoadingStatusProps> = ({
   textColor = "#00ffff",
   gradientColor = "#f1f1f1",
   loopDuration = 2,
-  className = "",
   textAnimationRepeat = 0,
   texts = [
     "Сканируем ваш профиль",
@@ -50,10 +49,6 @@ export const TextLoadingStatus: FC<LoadingStatusProps> = ({
     }
   }, [isFirstRender, texts]);
 
-  const gradientColorStyle: string =
-    " [--base-gradient-color:" + gradientColor + "] ";
-  const textColorStyle: string = " [--base-color:" + textColor + "] ";
-
   return (
     <div className={containerClassName}>
       <TextLoop
@@ -70,7 +65,8 @@ export const TextLoadingStatus: FC<LoadingStatusProps> = ({
               repeat={repeat}
               duration={duration}
               spread={spread}
-              className={textColorStyle + gradientColorStyle + className}
+              className={`[--base-color:${textColor}] [--base-gradient-color:${gradientColor}]`}
+              // className={textColorStyle + gradientColorStyle + className}
               {...rest}
               key={text + index}
             >
