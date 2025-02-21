@@ -1,9 +1,4 @@
 import { useState } from "react";
-import { TextLoadingStatus } from "./animations/TextLoadingStatus.tsx";
-import { OpeningCard } from "./components/OpeningCard.tsx";
-import LampImage from "./assets/images/floorLamp.png";
-import { FlippingCard } from "./components/FlippingCard.tsx";
-import { ResizeableNavbar } from "./components/ResizeableNavbar.tsx";
 import { SideBar } from "./core/SideBar.tsx";
 import {
   ResizableHandle,
@@ -18,11 +13,11 @@ function App() {
   return (
     <div className="flex w-[100vw] h-[100vh] bg-gray-900">
       <ResizablePanelGroup direction="horizontal">
-        <ResizablePanel>
+        <ResizablePanel defaultSize={10}>
           <SideBar setActiveComponent={setActiveComponent} />
         </ResizablePanel>
-        <ResizableHandle />
-        <ResizablePanel>
+        <ResizableHandle withHandle />
+        <ResizablePanel defaultSize={90}>
           <ComponentsList activeComponent={activeComponent} />
         </ResizablePanel>
       </ResizablePanelGroup>

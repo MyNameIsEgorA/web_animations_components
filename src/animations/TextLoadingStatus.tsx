@@ -63,6 +63,7 @@ export const TextLoadingStatus: FC<LoadingStatusProps> = ({
 
           return (
             <TextShimmerWave
+              // @ts-expect-error
               repeat={repeat}
               duration={duration}
               spread={spread}

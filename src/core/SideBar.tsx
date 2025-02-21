@@ -1,30 +1,30 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
+import { Reorder } from "motion/react";
+import { Components } from "./config.tsx";
+import { Button } from "../components/ui/button.tsx";
 
 interface SideBarProps {
   setActiveComponent: Dispatch<SetStateAction<string>>;
 }
 
 export const SideBar: FC<SideBarProps> = ({ setActiveComponent }) => {
+  const titles: string[] = Components.map((component) => component.title);
+  const [components, setComponents] = useState<string[]>(titles);
+
   return (
-    <div className="bg-gray-800 p-4 flex flex-col gap-y-4 h-full w-full">
-      <button
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-        onClick={() => setActiveComponent("OpeningCard")}
-      >
-        Opening Card
-      </button>
-      <button
-        className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors"
-        onClick={() => setActiveComponent("TextLoadingStatus")}
-      >
-        Text Loading Status
-      </button>
-      <button
-        className="px-4 py-2 bg-red-500 text-white rounded hover:bg-green-600 transition-colors"
-        onClick={() => setActiveComponent("FlippingCard")}
-      >
-        Flipping Card
-      </button>
+    <div className="bg-white p-4 flex items-center flex-col gap-y-4 h-full w-full">
+      <Reorder.Group onReorder={setComponents} values={components} axis="y">
+        {components.map((component) => (
+          <Reorder.Item value={component}>
+            <Button
+              className={"w-full mt-5 max-w-[300px]"}
+              onClick={() => setActiveComponent(component)}
+            >
+              {component}
+            </Button>
+          </Reorder.Item>
+        ))}
+      </Reorder.Group>
     </div>
   );
 };
