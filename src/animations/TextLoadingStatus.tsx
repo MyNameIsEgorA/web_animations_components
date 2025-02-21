@@ -1,6 +1,7 @@
 import { FC, HTMLProps, useEffect, useState } from "react";
 import { TextLoop } from "../components/ui/text-loop.tsx";
 import { TextShimmerWave } from "../components/ui/text-shimmer-wave.tsx";
+import { cn } from "../lib/utils.ts";
 
 interface LoadingStatusProps extends HTMLProps<HTMLParagraphElement> {
   textColor?: string;
@@ -65,9 +66,11 @@ export const TextLoadingStatus: FC<LoadingStatusProps> = ({
               repeat={repeat}
               duration={duration}
               spread={spread}
-              className={`[--base-color:${textColor}] [--base-gradient-color:${gradientColor}]`}
-              // className={textColorStyle + gradientColorStyle + className}
               {...rest}
+              className={cn(
+                `[--base-color:${textColor}] [--base-gradient-color:${gradientColor}]`,
+                rest.className,
+              )}
               key={text + index}
             >
               {text}

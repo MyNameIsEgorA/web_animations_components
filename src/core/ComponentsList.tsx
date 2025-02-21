@@ -26,11 +26,7 @@ export const ComponentsList: FC<ComponentsListProps> = ({
       )}
 
       {activeComponent === "TextLoadingStatus" && (
-        <TextLoadingStatus
-          textColor={"#fff000"}
-          gradientColor={"#ff0000"}
-          textAnimationDuration={1.6}
-        />
+        <TextLoadingStatus textAnimationDuration={1.6} />
       )}
 
       {activeComponent === "FlippingCard" && <FlippingCard />}
