@@ -64,14 +64,18 @@ export const FlippingCard: FC<FlippingCardProps> = ({
 
         {/* BACKEND */}
         <motion.div
-          className="absolute w-full h-full rounded-lg"
+          className={`absolute w-full h-${height} rounded-lg`}
           style={{
+            height: height,
             backfaceVisibility: "hidden",
             rotateY: direction === "LR" ? 180 : -180,
           }}
         >
           {!backSide && (
-            <Card className={`h-[${height}px] w-[${width}px]`}>
+            <Card
+              className={`h-[${height}px] w-[${width}px]`}
+              style={{ height: height }}
+            >
               <CardHeader>
                 <CardTitle>Лампочка</CardTitle>
               </CardHeader>
