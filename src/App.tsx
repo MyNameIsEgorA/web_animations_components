@@ -11,7 +11,7 @@ function App() {
   const [activeComponent, setActiveComponent] = useState("OpeningCard");
 
   return (
-    <div className="flex w-[100vw] h-[100vh] bg-gray-900">
+    <div className="flex w-[100vw] h-[100vh] bg-black">
       <ResizablePanelGroup direction="horizontal">
         <ResizablePanel defaultSize={10}>
           <SideBar setActiveComponent={setActiveComponent} />

@@ -13,11 +13,20 @@ export const SideBar: FC<SideBarProps> = ({ setActiveComponent }) => {
 
   return (
     <div className="bg-white p-4 flex items-center flex-col gap-y-4 h-full w-full">
-      <Reorder.Group onReorder={setComponents} values={components} axis="y">
+      <Reorder.Group
+        onReorder={setComponents}
+        values={components}
+        axis="y"
+        className="w-full flex flex-col items-center gap-4"
+      >
         {components.map((component) => (
-          <Reorder.Item value={component}>
+          <Reorder.Item
+            key={component}
+            value={component}
+            className="w-full flex justify-center"
+          >
             <Button
-              className={"w-full mt-5 max-w-[300px]"}
+              className="w-full max-w-[300px]"
               onClick={() => setActiveComponent(component)}
             >
               {component}
